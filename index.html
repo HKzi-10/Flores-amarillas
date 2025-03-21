@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flor Amarilla Animada</title>
+  <title>Flor Amarilla CSS</title>
   <style>
     body {
-      background: #fff8dc;
+      background: linear-gradient(to bottom, #fff9c4, #ffe082);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
       margin: 0;
       overflow: hidden;
@@ -17,48 +17,48 @@
 
     .flower {
       position: relative;
-      width: 120px;
-      height: 120px;
-      animation: float 5s ease-in-out infinite;
+      width: 200px;
+      height: 200px;
+      animation: float 6s ease-in-out infinite;
     }
 
     .petal {
       position: absolute;
-      width: 80px;
-      height: 80px;
-      background: #ffeb3b;
-      border-radius: 50%;
-      transform-origin: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 100px;
+      height: 150px;
+      background: radial-gradient(circle at center, #ffeb3b 40%, #fbc02d 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      transform-origin: center bottom;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       animation: petalPulse 4s ease-in-out infinite alternate;
     }
 
-    .petal:nth-child(1) { transform: rotate(0deg) translateX(60px); }
-    .petal:nth-child(2) { transform: rotate(45deg) translateX(60px); }
-    .petal:nth-child(3) { transform: rotate(90deg) translateX(60px); }
-    .petal:nth-child(4) { transform: rotate(135deg) translateX(60px); }
-    .petal:nth-child(5) { transform: rotate(180deg) translateX(60px); }
-    .petal:nth-child(6) { transform: rotate(225deg) translateX(60px); }
-    .petal:nth-child(7) { transform: rotate(270deg) translateX(60px); }
-    .petal:nth-child(8) { transform: rotate(315deg) translateX(60px); }
+    .petal:nth-child(1) { transform: rotate(0deg) translateY(-50px); }
+    .petal:nth-child(2) { transform: rotate(45deg) translateY(-50px); }
+    .petal:nth-child(3) { transform: rotate(90deg) translateY(-50px); }
+    .petal:nth-child(4) { transform: rotate(135deg) translateY(-50px); }
+    .petal:nth-child(5) { transform: rotate(180deg) translateY(-50px); }
+    .petal:nth-child(6) { transform: rotate(225deg) translateY(-50px); }
+    .petal:nth-child(7) { transform: rotate(270deg) translateY(-50px); }
+    .petal:nth-child(8) { transform: rotate(315deg) translateY(-50px); }
 
     .center {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 70px;
-      height: 70px;
-      background: #fbc02d;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at center, #fdd835, #f57f17);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
-      animation: centerPulse 4s ease-in-out infinite alternate;
+      animation: centerPulse 3s ease-in-out infinite alternate;
     }
 
     /* Animaciones */
     @keyframes petalPulse {
-      0% { transform: scale(1) rotate(var(--angle)) translateX(60px); }
-      100% { transform: scale(1.1) rotate(var(--angle)) translateX(60px); }
+      0% { transform: scale(1) rotate(var(--angle)) translateY(-50px); }
+      100% { transform: scale(1.1) rotate(var(--angle)) translateY(-50px); }
     }
 
     @keyframes centerPulse {
@@ -71,11 +71,11 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Responsivo */
+    /* Mobile Responsivo */
     @media (max-width: 480px) {
-      .flower { width: 90px; height: 90px; }
-      .petal { width: 60px; height: 60px; }
-      .center { width: 50px; height: 50px; }
+      .flower { width: 140px; height: 140px; }
+      .petal { width: 70px; height: 105px; }
+      .center { width: 60px; height: 60px; }
     }
   </style>
 </head>

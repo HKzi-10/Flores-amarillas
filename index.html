@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Girasol Animado</title>
-  <style>
-    body {
-      background: linear-gradient(to bottom, #ffe066, #f7b733);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girasol Bonito</title>
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(to bottom, #ffe57f, #f9a825);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .sunflower {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      animation: rotate 20s linear infinite;
-    }
+  .girasol {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
 
-    .petal {
-      position: absolute;
-      width: 80px;
-      height: 30px;
-      background: radial-gradient(circle at 30% 30%, #fff176, #fdd835);
-      border-radius: 50% 50% 50% 50%;
-      transform-origin: 50% 150px;
-    }
+  .petalo {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    background: radial-gradient(circle at 30% 30%, #ffeb3b, #fdd835);
+    border-radius: 50%;
+    transform-origin: center bottom;
+  }
 
-    .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100px;
-      height: 100px;
-      background-color: #4e342e;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-    }
+  .centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    background: #4e342e;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+  }
 
-    .purple-flower {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: radial-gradient(circle at center, #ab47bc, #6a1b9a);
-      border-radius: 50%;
-      animation: float 5s ease-in-out infinite alternate;
-    }
+  .flor-morada {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle at center, #8e24aa, #6a1b9a);
+    border-radius: 50%;
+    animation: flotar 6s infinite alternate ease-in-out;
+  }
 
-    .purple-flower::after {
-      content: "";
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      width: 10px;
-      height: 10px;
-      background: #fff;
-      border-radius: 50%;
-    }
+  .flor-morada::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+  }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes float {
-      from { transform: translateY(0); }
-      to { transform: translateY(-15px); }
-    }
-  </style>
+  @keyframes flotar {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
+</style>
 </head>
 <body>
-  <div class="sunflower">
-    <!-- Girasol pétalos -->
-    ${Array.from({ length: 20 }, (_, i) => `
-      <div class="petal" style="transform: rotate(${i * (360 / 20)}deg) translateY(-150px);"></div>
-    `).join('')}
+<div class="girasol">
+  <!-- Pétalos -->
+  ${Array.from({length: 20}, (_, i) => 
+    `<div class="petalo" style="top: 50%; left: 50%; transform: rotate(${i * 18}deg) translateY(-120px);"></div>`
+  ).join('')}
+  
+  <!-- Centro -->
+  <div class="centro"></div>
 
-    <!-- Centro -->
-    <div class="center"></div>
-
-    <!-- Flores moradas -->
-    <div class="purple-flower" style="top: 20px; left: 40px;"></div>
-    <div class="purple-flower" style="top: 50px; right: 40px;"></div>
-    <div class="purple-flower" style="bottom: 30px; left: 60px;"></div>
-    <div class="purple-flower" style="bottom: 60px; right: 80px;"></div>
-  </div>
+  <!-- Flores moradas decorativas -->
+  <div class="flor-morada" style="top: -20px; left: 60px;"></div>
+  <div class="flor-morada" style="top: 30px; right: -20px;"></div>
+  <div class="flor-morada" style="bottom: 40px; left: -30px;"></div>
+  <div class="flor-morada" style="bottom: -20px; right: 70px;"></div>
+</div>
 </body>
 </html>

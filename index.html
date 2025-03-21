@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Girasol y Flores</title>
+  <title>Girasol y Flores Moradas</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #fbeec1, #ffe082);
+      background: linear-gradient(to bottom, #fceabb, #f8b500);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      overflow: hidden;
       margin: 0;
+      overflow: hidden;
     }
 
     .scene {
@@ -22,12 +22,13 @@
       animation: float 6s ease-in-out infinite;
     }
 
+    /* Centro del girasol */
     .sunflower-center {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       background: radial-gradient(circle, #5d4037, #3e2723);
       border-radius: 50%;
       transform: translate(-50%, -50%);
@@ -35,29 +36,29 @@
       z-index: 2;
     }
 
+    /* Pétalos */
     .sunflower-petal {
       position: absolute;
+      top: 50%;
+      left: 50%;
       width: 80px;
-      height: 150px;
-      background: radial-gradient(circle, #ffeb3b 50%, #fbc02d 100%);
+      height: 160px;
+      background: radial-gradient(circle, #ffeb3b 40%, #fbc02d 100%);
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       transform-origin: center bottom;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       animation: sway 4s ease-in-out infinite alternate;
     }
 
-    /* 16 pétalos para el girasol */
     .sunflower-petal:nth-child(n) {
-      top: 50%; left: 50%;
-      transform: rotate(calc(22.5deg * var(--i))) translateY(-75px);
-      --i: 0;
+      transform: rotate(calc(22.5deg * var(--i))) translateY(-80px);
     }
 
-    /* Pequeñas flores moradas */
+    /* Flores moradas */
     .small-flower {
       position: absolute;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       background: radial-gradient(circle, #ab47bc, #8e24aa);
       border-radius: 50%;
       animation: pulse 3s ease-in-out infinite alternate;
@@ -67,31 +68,26 @@
       content: '';
       position: absolute;
       top: 50%; left: 50%;
-      width: 15px;
-      height: 15px;
+      width: 18px;
+      height: 18px;
       background: #d1c4e9;
       border-radius: 50%;
       transform: translate(-50%, -50%);
       box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
     }
 
-    /* Posición aleatoria de flores pequeñas */
-    .small-flower:nth-child(1) { top: 20px; left: 30px; }
-    .small-flower:nth-child(2) { top: 280px; left: 50px; }
-    .small-flower:nth-child(3) { top: 300px; left: 250px; }
-    .small-flower:nth-child(4) { top: 40px; left: 270px; }
-    .small-flower:nth-child(5) { top: 150px; left: 300px; }
-    .small-flower:nth-child(6) { top: 180px; left: 10px; }
+    /* Flores alrededor */
+    .flower1 { top: 20px; left: 20px; }
+    .flower2 { top: 20px; right: 20px; }
+    .flower3 { bottom: 20px; left: 30px; }
+    .flower4 { bottom: 30px; right: 40px; }
+    .flower5 { top: 50%; left: -25px; transform: translateY(-50%); }
+    .flower6 { top: 50%; right: -25px; transform: translateY(-50%); }
 
     /* Animaciones */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
     @keyframes sway {
-      0% { transform: rotate(calc(22.5deg * var(--i))) translateY(-75px) rotate(-3deg); }
-      100% { transform: rotate(calc(22.5deg * var(--i))) translateY(-75px) rotate(3deg); }
+      0% { transform: rotate(calc(22.5deg * var(--i))) translateY(-80px) rotate(-2deg); }
+      100% { transform: rotate(calc(22.5deg * var(--i))) translateY(-80px) rotate(2deg); }
     }
 
     @keyframes pulse {
@@ -99,40 +95,42 @@
       100% { transform: scale(1.1); }
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     @media (max-width: 480px) {
       .scene { width: 280px; height: 280px; }
-      .sunflower-center { width: 80px; height: 80px; }
+      .sunflower-center { width: 90px; height: 90px; }
       .sunflower-petal { width: 60px; height: 120px; }
-      .small-flower { width: 30px; height: 30px; }
+      .small-flower { width: 35px; height: 35px; }
       .small-flower::after { width: 12px; height: 12px; }
     }
   </style>
 </head>
 <body>
-  <div class="scene">
-    <!-- Girasol -->
+  <div class="scene" id="scene">
+    <!-- Flores moradas alrededor -->
+    <div class="small-flower flower1"></div>
+    <div class="small-flower flower2"></div>
+    <div class="small-flower flower3"></div>
+    <div class="small-flower flower4"></div>
+    <div class="small-flower flower5"></div>
+    <div class="small-flower flower6"></div>
+
+    <!-- Centro del girasol -->
     <div class="sunflower-center"></div>
-    <!-- Pétalos girasol -->
-    <!-- 16 pétalos -->
-    ${[...Array(16)].map((_, i) => `<div class="sunflower-petal" style="--i:${i};"></div>`).join('')}
-    
-    <!-- Flores moradas -->
-    <div class="small-flower"></div>
-    <div class="small-flower"></div>
-    <div class="small-flower"></div>
-    <div class="small-flower"></div>
-    <div class="small-flower"></div>
-    <div class="small-flower"></div>
   </div>
 
   <script>
-    // Generar dinámicamente los pétalos
-    const scene = document.querySelector('.scene');
+    // Generar dinámicamente los 16 pétalos
+    const scene = document.getElementById('scene');
     for (let i = 0; i < 16; i++) {
       const petal = document.createElement('div');
       petal.classList.add('sunflower-petal');
       petal.style.setProperty('--i', i);
-      scene.insertBefore(petal, scene.firstChild);
+      scene.appendChild(petal);
     }
   </script>
 </body>

@@ -3,93 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flor Amarilla CSS</title>
+  <title>Girasol y Flores</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #fff9c4, #ffe082);
+      background: linear-gradient(to bottom, #fbeec1, #ffe082);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
       overflow: hidden;
+      margin: 0;
     }
 
-    .flower {
+    .scene {
       position: relative;
-      width: 200px;
-      height: 200px;
+      width: 350px;
+      height: 350px;
       animation: float 6s ease-in-out infinite;
     }
 
-    .petal {
-      position: absolute;
-      width: 100px;
-      height: 150px;
-      background: radial-gradient(circle at center, #ffeb3b 40%, #fbc02d 100%);
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      transform-origin: center bottom;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      animation: petalPulse 4s ease-in-out infinite alternate;
-    }
-
-    .petal:nth-child(1) { transform: rotate(0deg) translateY(-50px); }
-    .petal:nth-child(2) { transform: rotate(45deg) translateY(-50px); }
-    .petal:nth-child(3) { transform: rotate(90deg) translateY(-50px); }
-    .petal:nth-child(4) { transform: rotate(135deg) translateY(-50px); }
-    .petal:nth-child(5) { transform: rotate(180deg) translateY(-50px); }
-    .petal:nth-child(6) { transform: rotate(225deg) translateY(-50px); }
-    .petal:nth-child(7) { transform: rotate(270deg) translateY(-50px); }
-    .petal:nth-child(8) { transform: rotate(315deg) translateY(-50px); }
-
-    .center {
+    .sunflower-center {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle at center, #fdd835, #f57f17);
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #5d4037, #3e2723);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
-      animation: centerPulse 3s ease-in-out infinite alternate;
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+      z-index: 2;
     }
+
+    .sunflower-petal {
+      position: absolute;
+      width: 80px;
+      height: 150px;
+      background: radial-gradient(circle, #ffeb3b 50%, #fbc02d 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      transform-origin: center bottom;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: sway 4s ease-in-out infinite alternate;
+    }
+
+    /* 16 pétalos para el girasol */
+    .sunflower-petal:nth-child(n) {
+      top: 50%; left: 50%;
+      transform: rotate(calc(22.5deg * var(--i))) translateY(-75px);
+      --i: 0;
+    }
+
+    /* Pequeñas flores moradas */
+    .small-flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #ab47bc, #8e24aa);
+      border-radius: 50%;
+      animation: pulse 3s ease-in-out infinite alternate;
+    }
+
+    .small-flower::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 15px;
+      height: 15px;
+      background: #d1c4e9;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    /* Posición aleatoria de flores pequeñas */
+    .small-flower:nth-child(1) { top: 20px; left: 30px; }
+    .small-flower:nth-child(2) { top: 280px; left: 50px; }
+    .small-flower:nth-child(3) { top: 300px; left: 250px; }
+    .small-flower:nth-child(4) { top: 40px; left: 270px; }
+    .small-flower:nth-child(5) { top: 150px; left: 300px; }
+    .small-flower:nth-child(6) { top: 180px; left: 10px; }
 
     /* Animaciones */
-    @keyframes petalPulse {
-      0% { transform: scale(1) rotate(var(--angle)) translateY(-50px); }
-      100% { transform: scale(1.1) rotate(var(--angle)) translateY(-50px); }
-    }
-
-    @keyframes centerPulse {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      100% { transform: translate(-50%, -50%) scale(1.1); }
-    }
-
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    /* Mobile Responsivo */
+    @keyframes sway {
+      0% { transform: rotate(calc(22.5deg * var(--i))) translateY(-75px) rotate(-3deg); }
+      100% { transform: rotate(calc(22.5deg * var(--i))) translateY(-75px) rotate(3deg); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
     @media (max-width: 480px) {
-      .flower { width: 140px; height: 140px; }
-      .petal { width: 70px; height: 105px; }
-      .center { width: 60px; height: 60px; }
+      .scene { width: 280px; height: 280px; }
+      .sunflower-center { width: 80px; height: 80px; }
+      .sunflower-petal { width: 60px; height: 120px; }
+      .small-flower { width: 30px; height: 30px; }
+      .small-flower::after { width: 12px; height: 12px; }
     }
   </style>
 </head>
 <body>
-  <div class="flower">
-    <div class="petal" style="--angle: 0deg"></div>
-    <div class="petal" style="--angle: 45deg"></div>
-    <div class="petal" style="--angle: 90deg"></div>
-    <div class="petal" style="--angle: 135deg"></div>
-    <div class="petal" style="--angle: 180deg"></div>
-    <div class="petal" style="--angle: 225deg"></div>
-    <div class="petal" style="--angle: 270deg"></div>
-    <div class="petal" style="--angle: 315deg"></div>
-    <div class="center"></div>
+  <div class="scene">
+    <!-- Girasol -->
+    <div class="sunflower-center"></div>
+    <!-- Pétalos girasol -->
+    <!-- 16 pétalos -->
+    ${[...Array(16)].map((_, i) => `<div class="sunflower-petal" style="--i:${i};"></div>`).join('')}
+    
+    <!-- Flores moradas -->
+    <div class="small-flower"></div>
+    <div class="small-flower"></div>
+    <div class="small-flower"></div>
+    <div class="small-flower"></div>
+    <div class="small-flower"></div>
+    <div class="small-flower"></div>
   </div>
+
+  <script>
+    // Generar dinámicamente los pétalos
+    const scene = document.querySelector('.scene');
+    for (let i = 0; i < 16; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('sunflower-petal');
+      petal.style.setProperty('--i', i);
+      scene.insertBefore(petal, scene.firstChild);
+    }
+  </script>
 </body>
 </html>

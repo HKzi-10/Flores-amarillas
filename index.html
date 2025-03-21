@@ -1642,6 +1642,34 @@ h1 {
 
 
     </style>
+    <style>
+      /* Estilos anteriores... */
+
+      /* Nueva animación para cambiar a morado */
+      @keyframes changeToPurple {
+        0% {
+          background-color: #fddd25; /* Amarillo */
+        }
+        100% {
+          background-color: #800080; /* Morado */
+        }
+      }
+
+      /* Aplicar la animación a las flores después de 5 segundos */
+      .flower__leaf {
+        animation: changeToPurple 1s 5s forwards;
+      }
+
+      /* Asegúrate de que las hojas también cambien de color */
+      .flower__line__leaf {
+        animation: changeToPurple 1s 5s forwards;
+      }
+
+      /* Asegúrate de que el círculo blanco también cambie de color */
+      .flower__white-circle {
+        animation: changeToPurple 1s 5s forwards;
+      }
+    </style>
   </head>
   <body class="container">
     <h1 class="titulo">
